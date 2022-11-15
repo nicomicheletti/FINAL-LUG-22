@@ -3,6 +3,16 @@ import Product from "../models/product"
 
 
 export const productController = {
+    getAll: async (req: Request, res: Response) => {
+        try {
+            var prod = await Product.find({});
+            res.send(prod);
+        } catch (error) {
+            res.status(500).send(error)
+        }
+
+    },
+    
     add: async (req: Request, res: Response) => {
         try {
             const newProd = new Product({ ...req.body })
@@ -23,13 +33,4 @@ export const productController = {
         }
     },
 
-    getAll: async (req: Request, res: Response) => {
-        try {
-            var prod = await Product.find({});
-            res.send(prod);
-        } catch (error) {
-            res.status(500).send(error)
-        }
-
-    },
 };

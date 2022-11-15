@@ -4,18 +4,6 @@ import Product from "../models/product"
 
 
 export const cartController = {
-
-    add: async (req: Request, res: Response) => {
-
-        try {
-            const newCart = new Cart({});
-            var cart = await newCart.save();
-            res.send(cart);
-        } catch (error) {
-            res.status(500).send(error)
-        }
-    },
-
     get: async (req: Request, res: Response) => {
 
         try {
@@ -37,6 +25,17 @@ export const cartController = {
             res.status(500).send(error);
         }
 
+    },
+
+    add: async (req: Request, res: Response) => {
+
+        try {
+            const newCart = new Cart({});
+            var cart = await newCart.save();
+            res.send(cart);
+        } catch (error) {
+            res.status(500).send(error)
+        }
     },
 
     addProduct: async (req: Request, res: Response) => {
